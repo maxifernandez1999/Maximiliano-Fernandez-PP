@@ -1,0 +1,100 @@
+<div class="container">
+      <main>
+            <div class="py-5 text-center">
+                  <img class="d-block mx-auto mb-4" src="/docs/5.0/assets/brand/bootstrap-logo.svg" alt="" width="72"
+                        height="57">
+                  <h2>Products</h2>
+                  <p class="lead">Below is an example form built entirely with Bootstrap’s form controls. Each required
+                        form group has a validation state that can be triggered by attempting to submit the form without
+                        completing it.</p>
+            </div>
+
+            <div class="row g-5">
+                  <div class="col-md-5 col-lg-4 order-md-last">
+                        <app-countries-table></app-countries-table>
+                  </div>
+                  <div class="col-md-7 col-lg-8">
+                        <h4 class="mb-3">Add product</h4>
+                        <form [formGroup]="productsForm" class="needs-validation">
+                              <div class="row g-3">
+                                    <div class="col-sm-6">
+                                          <label for="firstName" class="form-label">Code</label>
+                                          <input type="text"
+                                          formControlName="code"
+                                          [ngClass]="{ 'is-invalid': form.code.touched && form.code.errors }" class="form-control" placeholder="" value=""
+                                                required>
+                                                <div *ngIf="form.code.touched && form.code.errors" class="invalid-feedback">
+                                                      <div *ngIf="form.code.errors.required">Es requerido</div>
+                                                      <div *ngIf="form.code.errors.minlenght">minimo 6 caracteres</div>
+                                                </div>   
+                                    </div>
+
+                                    <div class="col-sm-6">
+                                          <label for="lastName" class="form-label">Description</label>
+                                          <input type="text"
+                                          formControlName="description"
+                                          [ngClass]="{ 'is-invalid': form.description.touched && form.description.errors }" class="form-control" id="lastName" placeholder="" value=""
+                                                required>
+                                                <div *ngIf="form.description.touched && form.description.errors" class="invalid-feedback">
+                                                      <div *ngIf="form.description.errors.required">Es requerido</div>
+                                                      <div *ngIf="form.description.errors.maxlenght">maximo 30 caracteres</div>
+                                                </div> 
+                                    </div>
+
+                                    <div class="col-12">
+                                          <label for="username" class="form-label">Price</label>
+                                          <div class="input-group has-validation">
+                                                <input type="text" class="form-control"
+                                                [ngClass]="{ 'is-invalid': form.price.touched && form.price.errors }" 
+                                                formControlName="price"
+                                                      placeholder="Price" required>
+                                                      <div *ngIf="form.price.touched && form.price.errors" class="invalid-feedback">
+                                                            <div *ngIf="form.price.errors.required">Es requerido</div>
+                                                            <div *ngIf="form.price.errors.max">maximo 99999</div>
+                                                      </div> 
+                                          </div>
+                                    </div>
+
+                                    <div class="col-12">
+                                          <label for="email" class="form-label">Stock</label>
+                                          <input type="number" class="form-control"
+                                          [ngClass]="{ 'is-invalid': form.stock.touched && form.stock.errors }"
+                                          formControlName="stock"
+                                                placeholder="Stock">
+                                                <div *ngIf="form.stock.touched && form.stock.errors" class="invalid-feedback">
+                                                      <div *ngIf="form.stock.errors.required">Es requerido</div>
+                                                </div> 
+                                    </div>
+
+                                    <div class="col-12">
+                                          <label for="address" class="form-label">Origin</label>
+                                          <input type="text" class="form-control"
+                                          [ngClass]="{ 'is-invalid': form.origin.touched && form.origin.errors }"
+                                          formControlName="origin" id="address" required>
+                                          <div *ngIf="form.origin.touched && form.origin.errors" class="invalid-feedback">
+                                                <div *ngIf="form.origin.errors.required">Es requerido</div>
+                                                <div *ngIf="form.origin.errors.maxlenght">maximo 30 caracteres</div>
+                                          </div> 
+                                    </div>
+                              </div>
+                              <hr class="my-4">
+                              <div class="form-check">
+                                    <input type="checkbox"
+                                    formControlName="eatable" class="form-check-input" id="save-info">
+                                    <label class="form-check-label" for="save-info">Eatable</label>
+                              </div>
+                              <hr class="my-4">
+                              <button class="w-100 btn btn-primary btn-lg" type="submit" [disabled]="productsForm.invalid" (click)="addProduct()">Add</button>
+                        </form>
+                  </div>
+            </div>
+      </main>
+      <footer class="my-5 pt-5 text-muted text-center text-small">
+            <p class="mb-1">&copy; 2017–2021 Company Name</p>
+            <ul class="list-inline">
+                  <li class="list-inline-item"><a href="#">Privacy</a></li>
+                  <li class="list-inline-item"><a href="#">Terms</a></li>
+                  <li class="list-inline-item"><a href="#">Support</a></li>
+            </ul>
+      </footer>
+</div>
