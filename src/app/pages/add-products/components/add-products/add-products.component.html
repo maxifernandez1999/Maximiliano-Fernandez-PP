@@ -11,7 +11,7 @@
 
             <div class="row g-5">
                   <div class="col-md-5 col-lg-4 order-md-last">
-                        <app-countries-table></app-countries-table>
+                        ...
                   </div>
                   <div class="col-md-7 col-lg-8">
                         <h4 class="mb-3">Add product</h4>
@@ -67,14 +67,7 @@
                                     </div>
 
                                     <div class="col-12">
-                                          <label for="address" class="form-label">Origin</label>
-                                          <input type="text" class="form-control"
-                                          [ngClass]="{ 'is-invalid': form.origin.touched && form.origin.errors }"
-                                          formControlName="origin" id="address" required>
-                                          <div *ngIf="form.origin.touched && form.origin.errors" class="invalid-feedback">
-                                                <div *ngIf="form.origin.errors.required">Es requerido</div>
-                                                <div *ngIf="form.origin.errors.maxlenght">maximo 30 caracteres</div>
-                                          </div> 
+                                          <app-countries-table></app-countries-table>
                                     </div>
                               </div>
                               <hr class="my-4">

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Country } from 'src/app/shared/models/country';
 import { CountriesService } from '../../services/countries.service';
 
 @Component({
@@ -7,19 +8,29 @@ import { CountriesService } from '../../services/countries.service';
   styleUrls: ['./countries-table.component.scss']
 })
 export class CountriesTableComponent implements OnInit {
-  private countries:any[] = [];
+  public countries: Country[] = [];
   constructor(private countriesSerice: CountriesService) { }
 
   ngOnInit(): void {
     this.getCountriesByRegion();
   }
+  public getCountriesByRegion() {
+    this.countriesSerice.getCountriesByContinent('south').subscribe(response => {
+      for (const iterator of response) {
+        if (iterator.name.official === "Argentine Republic" || iterator.name.official === "Kingdom of Spain" || iterator.name.official === "Republic of Paraguay") {
+          let country: Country = {
+            officialName: iterator.name.official,
+            flag: iterator.flags.png
+          }
+          this.countries.push(country);
+        }
 
-  public getCountriesByRegion(){
-    this.countriesSerice.getCountriesByContinent('lima').subscribe(response => {
-      this.countries = response;
-      console.log(response[0].name.official);
-      console.log(response[0].flags.png);
+      }
+
     });
+  }
+  public getRadioButtonChecked(e:any, countryName:string){
+    console.log(e.target.checked);
   }
 
 }

@@ -1,1 +1,26 @@
-<p>countries-table works!</p>
+<h5 class="mb-3">Origin</h5>
+<table class="table table-hover">
+      <thead>
+            <tr>
+                  <th scope="col">Official Name</th>
+                  <th scope="col">Flag</th>
+                  <th scope="col">Select</th>
+            </tr>
+      </thead>
+      <tbody>
+            <tr *ngFor="let country of countries">
+                  <th>{{ country.officialName }}</th>
+                  <td>
+                        <img src="{{ country.flag }}" alt="Avatar_url" height="40px" weight="40px" />
+                  </td>
+                  <td>
+                        <div class="my-3">
+                              <div class="form-check">
+                                    <input id="credit" name="paymentMethod" type="radio" (change)="getRadioButtonChecked($event,country.officialName)" class="form-check-input"
+                                    checked required>      
+                              </div>
+                        </div>
+                  </td>
+            </tr>
+      </tbody>
+</table>
