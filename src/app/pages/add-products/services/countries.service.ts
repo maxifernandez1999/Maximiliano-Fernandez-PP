@@ -10,6 +10,6 @@ export class CountriesService {
   constructor(private http: HttpClient) { }
 
   public getCountriesByContinent(continent: string): Observable<any> {
-    return this.http.get<any>(`https://restcountries.com/v3.1/region/${continent}`)
+    return this.http.get<any>(`https://restcountries.com/v3.1/capital/${continent}`)
   }
 }

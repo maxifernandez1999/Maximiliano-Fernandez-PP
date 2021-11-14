@@ -7,14 +7,19 @@ import { CountriesService } from '../../services/countries.service';
   styleUrls: ['./countries-table.component.scss']
 })
 export class CountriesTableComponent implements OnInit {
-
+  private countries:any[] = [];
   constructor(private countriesSerice: CountriesService) { }
 
   ngOnInit(): void {
+    this.getCountriesByRegion();
   }
 
   public getCountriesByRegion(){
-    this.countriesSerice.getCountriesByContinent('europe');
+    this.countriesSerice.getCountriesByContinent('lima').subscribe(response => {
+      this.countries = response;
+      console.log(response[0].name.official);
+      console.log(response[0].flags.png);
+    });
   }
 
 }
