@@ -1,0 +1,24 @@
+<table class="table table-hover">
+      <thead>
+        <tr>
+          <th scope="col">Code</th>
+          <th scope="col">Description</th>
+          <th scope="col">Price</th>
+          <th scope="col">Stock</th>
+          <th scope="col">Eatable</th>
+          <th scope="col">Origin</th>
+          <th scope="col">Detail</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let product of products">
+          <th>{{product.code}}</th>
+          <td>{{product.description}}</td>
+          <td>{{product.price}}</td>
+          <th>{{product.stock}}</th>
+          <td>{{product.eatable | eatable}}</td>
+          <td>{{product.origin}}</td>
+          <td><input type="button" class="btn btn-primary" value="Detail"></td>
+        </tr>
+      </tbody>
+    </table>
