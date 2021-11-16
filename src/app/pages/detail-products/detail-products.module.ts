@@ -4,6 +4,7 @@ import { DetailProductsComponent } from './components/detail-products/detail-pro
 import { ProductsTableComponent } from './components/products-table/products-table.component';
 import { EatablePipe } from 'src/app/shared/pipes/eatable.pipe';
 import { DetailComponent } from './components/detail/detail.component';
+import { OriginComponent } from './components/origin/origin.component';
 
 
 
@@ -12,7 +13,8 @@ import { DetailComponent } from './components/detail/detail.component';
     DetailProductsComponent,
     ProductsTableComponent,
     EatablePipe,
-    DetailComponent
+    DetailComponent,
+    OriginComponent
   ],
   imports: [
     CommonModule

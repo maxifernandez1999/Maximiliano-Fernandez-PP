@@ -1,9 +1,9 @@
 <div class="list-group">
       <a href="#" class="list-group-item list-group-item-action active" aria-current="true">
-            The current link item
+            Code: {{product.code}}
       </a>
-      <a class="list-group-item list-group-item-action">A second link item</a>
-      <a class="list-group-item list-group-item-action">A third link item</a>
-      <a class="list-group-item list-group-item-action">A fourth link item</a>
-      <a class="list-group-item list-group-item-action">A disabled link item</a>
+      <a class="list-group-item list-group-item-action">Description: {{product.description}}</a>
+      <a class="list-group-item list-group-item-action">Stock: {{product.stock}}</a>
+      <a class="list-group-item list-group-item-action">Price: {{product.price}}</a>
+      <a class="list-group-item list-group-item-action">Eatable?: {{product.eatable | eatable}}</a>
 </div>

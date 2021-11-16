@@ -1,0 +1,46 @@
+<div class="container">
+      <main>
+            <div class="col-md-7 col-lg-8">
+                  <h4 class="mb-3">Add product</h4>
+                  <form [formGroup]="containerUpdateForm" class="needs-validation">
+                        <div class="row g-3">
+                              <div class="col-12">
+                                    <label for="firstName" class="form-label">Code</label>
+                                    <input type="text" formControlName="code"
+                                          [ngClass]="{ 'is-invalid': form.code.touched && form.code.errors }"
+                                          class="form-control" placeholder="" value="" required>
+                                    <div *ngIf="form.code.touched && form.code.errors" class="invalid-feedback">
+                                          <div *ngIf="form.code.errors.required">Es requerido</div>
+                                          <div *ngIf="form.code.errors.minlenght">minimo 6 caracteres</div>
+                                    </div>
+                              </div>
+                              <div class="col-12">
+                                    <label for="lastName" class="form-label">Mark</label>
+                                    <input type="text" formControlName="mark"
+                                          [ngClass]="{ 'is-invalid': form.mark.touched && form.mark.errors }"
+                                          class="form-control" id="lastName" placeholder="" value="" required>
+                                    <div *ngIf="form.mark.touched && form.mark.errors" class="invalid-feedback">
+                                          <div *ngIf="form.mark.errors.required">Es requerido</div>
+                                          <div *ngIf="form.mark.errors.maxlenght">maximo 30 caracteres</div>
+                                    </div>
+                              </div>
+                              <div class="col-12">
+                                    <label for="lastName" class="form-label">Lot</label>
+                                    <input type="number" formControlName="lot"
+                                          [ngClass]="{ 'is-invalid': form.lot.touched && form.lot.errors }"
+                                          class="form-control" id="lastName" placeholder="" value="" required>
+                                    <div *ngIf="form.lot.touched && form.lot.errors" class="invalid-feedback">
+                                          <div *ngIf="form.lot.errors.required">Es requerido</div>
+                                          <div *ngIf="form.lot.errors.max">99999 max</div>
+                                    </div>
+                              </div>
+                        </div>
+
+
+                        <hr class="my-4">
+                        <button class="w-100 btn btn-primary btn-lg" type="button" [disabled]="containerUpdateForm.invalid"
+                              (click)="updateContainer()">Add</button>
+                  </form>
+            </div>
+      </main>
+</div>

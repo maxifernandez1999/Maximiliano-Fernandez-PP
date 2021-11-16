@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { Country } from 'src/app/shared/models/country';
 import { CountriesService } from '../../services/countries.service';
 
@@ -9,6 +9,7 @@ import { CountriesService } from '../../services/countries.service';
 })
 export class CountriesTableComponent implements OnInit {
   public countries: Country[] = [];
+  @Output() sendDataToAddProducts = new EventEmitter<string[]>();
   constructor(private countriesSerice: CountriesService) { }
 
   ngOnInit(): void {
@@ -29,8 +30,8 @@ export class CountriesTableComponent implements OnInit {
 
     });
   }
-  public getRadioButtonChecked(e:any, countryName:string){
-    console.log(e.target.checked);
+  public getRadioButtonChecked(countryName:string,flag:string){
+    this.sendDataToAddProducts.emit([countryName,flag]);
   }
 
 }
