@@ -18,9 +18,10 @@ export class ContainerComponent implements OnInit {
   public getDataToCreateComponent(event:Container):void{
     this.containers.push(event);
   }
-  public updateContainer(container:Container):void{
+  public updateDeleteContainer(container:Container):void{
     this.currentContainer = container;
   }
+ 
   public getContainers(): void {
     this.containerService.getContainer().subscribe((response) => {
       response.forEach((res) => {

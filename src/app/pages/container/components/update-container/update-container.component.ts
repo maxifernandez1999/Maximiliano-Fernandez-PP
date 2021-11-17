@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnChanges, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Container } from 'src/app/shared/models/container';
 import { ContainerService } from 'src/app/shared/services/container.service';
@@ -8,20 +8,20 @@ import { ContainerService } from 'src/app/shared/services/container.service';
   templateUrl: './update-container.component.html',
   styleUrls: ['./update-container.component.scss']
 })
-export class UpdateContainerComponent implements OnInit {
+export class UpdateContainerComponent implements OnInit, OnChanges {
   @Input('dataToContainerComponent') dataToContainerComponent:Container; 
   containerUpdateForm: FormGroup;
   container:Container;
   constructor(
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private containerService: ContainerService
   ) { }
 
   ngOnInit(): void {
     this.initForm();
-    this.setDataToContainer(this.dataToContainerComponent);
   }
-  get codeValue(): string {
-    return this.containerUpdateForm.get('code').value;
+  ngOnChanges():void{
+    this.setDataToContainer(this.dataToContainerComponent);
   }
   get markValue(): string {
     return this.containerUpdateForm.get('mark').value;
@@ -34,29 +34,29 @@ export class UpdateContainerComponent implements OnInit {
   }
   initForm() {
     this.containerUpdateForm = this.fb.group({
-      code: ['', [Validators.required, Validators.minLength(6)]],
       mark: ['', [Validators.required, Validators.maxLength(30)]],
       lot: ['', [Validators.required, Validators.max(99999)]],
     });
   }
   public setDataToContainer(container:Container):void{
-    // this.containerUpdateForm.setValue({
-    //   code: "container.code",
-    //   mark:" container.mark",
-    //   lot:  "container.lot"
-    // });
+    if(this.containerUpdateForm !== undefined){
+      this.containerUpdateForm.setValue({
+        mark: this.dataToContainerComponent.mark,
+        lot:  this.dataToContainerComponent.lot
+      });
+    }
   }
   public updateContainer(): void {
     this.container = {
-      code: this.codeValue,
+      code: "",
       mark: this.markValue,
       lot: this.lotValue,
     };
-    // this.containerService.updateContainer(this.container).then(response => {
-    //   console.log(response);
-    // }).catch(error => {
-    //   console.log(error);
-    // })
+    this.containerService.updateContainer(this.container,this.dataToContainerComponent.id).then(response => {
+      window.location.reload();
+    }).catch(error => {
+      console.log(error);
+    })
   }
 
 }

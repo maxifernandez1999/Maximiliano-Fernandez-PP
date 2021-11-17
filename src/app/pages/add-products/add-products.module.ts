@@ -4,6 +4,7 @@ import { AddProductsComponent } from './components/add-products/add-products.com
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { CountriesTableComponent } from './components/countries-table/countries-table.component';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 
 
@@ -15,7 +16,8 @@ import { CountriesTableComponent } from './components/countries-table/countries-
   imports: [
     CommonModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    SharedModule
   ]
 })
 export class AddProductsModule { }

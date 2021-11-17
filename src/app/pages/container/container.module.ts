@@ -5,6 +5,7 @@ import { CreateContainerComponent } from './components/create-container/create-c
 import { UpdateContainerComponent } from './components/update-container/update-container.component';
 import { DeleteContainerComponent } from './components/delete-container/delete-container.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 
 
@@ -17,7 +18,8 @@ import { ReactiveFormsModule } from '@angular/forms';
   ],
   imports: [
     CommonModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    SharedModule
   ]
 })
 export class ContainerModule { }

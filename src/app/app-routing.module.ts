@@ -5,6 +5,7 @@ import { ContainerComponent } from './pages/container/components/container/conta
 import { DetailProductsComponent } from './pages/detail-products/components/detail-products/detail-products.component';
 import { LoginComponent } from './pages/login/components/login/login.component';
 import { WelcomeComponent } from './pages/welcome/components/welcome/welcome.component';
+import { AuthGuard } from './shared/guards/auth.guard';
 
 const routes: Routes = [
   {
@@ -17,15 +18,18 @@ const routes: Routes = [
   },
   {
     path: 'add',
-    component: AddProductsComponent
+    component: AddProductsComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'detail',
-    component: DetailProductsComponent
+    component: DetailProductsComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'container',
-    component: ContainerComponent
+    component: ContainerComponent,
+    canActivate: [AuthGuard]
   }
 ];
 

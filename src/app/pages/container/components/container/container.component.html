@@ -1,3 +1,4 @@
+<app-navbar></app-navbar>
 <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
       <symbol id="check" viewBox="0 0 16 16">
         <title>Check</title>
@@ -36,21 +37,7 @@
             <app-update-container [dataToContainerComponent]="currentContainer"></app-update-container>
           </div>
           <div class="col">
-            <div class="card mb-4 rounded-3 shadow-sm border-primary">
-              <div class="card-header py-3 text-white bg-primary border-primary">
-                <h4 class="my-0 fw-normal">Enterprise</h4>
-              </div>
-              <div class="card-body">
-                <h1 class="card-title pricing-card-title">$29<small class="text-muted fw-light">/mo</small></h1>
-                <ul class="list-unstyled mt-3 mb-4">
-                  <li>30 users included</li>
-                  <li>15 GB of storage</li>
-                  <li>Phone and email support</li>
-                  <li>Help center access</li>
-                </ul>
-                <button type="button" class="w-100 btn btn-lg btn-primary">Contact us</button>
-              </div>
-            </div>
+            <app-delete-container [dataToContainerComponent]="currentContainer"></app-delete-container>
           </div>
         </div>
     
@@ -61,6 +48,8 @@
             <tr>
               <th scope="col">Code</th>
               <th scope="col">Detail</th>
+              <th scope="col">Lot</th>
+              <th scope="col">Actions</th>
             </tr>
           </thead>
           <tbody>
@@ -68,7 +57,7 @@
               <th>{{container.code}}</th>
               <th>{{container.mark}}</th>
               <th>{{container.lot}}</th>
-              <td><input type="button" class="btn btn-info" value="Update" (click)="updateContainer(container)"></td>
+              <td><input type="button" class="btn btn-info" value="Update/Delete" (click)="updateDeleteContainer(container)"></td>
             </tr>
           </tbody>
         </table>

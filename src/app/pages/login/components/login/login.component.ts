@@ -5,9 +5,11 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
+import { Router } from '@angular/router';
 
 import { User } from 'src/app/shared/models/user';
 import { AuthService } from 'src/app/shared/services/auth.service';
+import { UserService } from 'src/app/shared/services/user.service';
 
 @Component({
   selector: 'app-login',
@@ -16,7 +18,12 @@ import { AuthService } from 'src/app/shared/services/auth.service';
 })
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
-  constructor(private fb: FormBuilder, private authService: AuthService) {}
+  constructor(
+    private fb: FormBuilder,
+    private authService: AuthService,
+    private userService: UserService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     this.initForm();
@@ -37,8 +44,9 @@ export class LoginComponent implements OnInit {
   public get form(): any {
     return this.loginForm.controls;
   }
-  signIn(): void {
+  public signIn(): void {
     let user: User = {
+      profile: '',
       email: this.emailValue,
       password: this.passwordValue,
     };
@@ -46,17 +54,23 @@ export class LoginComponent implements OnInit {
       .login(user)
       .then((response) => {
         this.authService.isLoged = true;
-        console.log(response);
+        this.router.navigate(['add']);
       })
       .catch((error) => {
         console.log(error);
       });
   }
-  signOut(): void {
+  public fastAccess(): void {
+    let user: User = {
+      profile: '',
+      email: 'test@gmail.com',
+      password: '123456',
+    };
     this.authService
-      .logout()
+      .login(user)
       .then((response) => {
-        this.authService.isLoged = false;
+        this.authService.isLoged = true;
+        this.router.navigate(['add']);
       })
       .catch((error) => {
         console.log(error);

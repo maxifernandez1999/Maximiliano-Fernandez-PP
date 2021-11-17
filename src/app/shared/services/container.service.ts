@@ -20,7 +20,13 @@ export class ContainerService {
   //   return this.containerRef.valueChanges() as Observable<Container[]>;
   // }
   public updateContainer(container: Container, idContainer:string): Promise<any> {
-    return this.containerRef.doc(idContainer).update({ ...container });
+    return this.containerRef.doc(idContainer).update({
+      mark: container.mark, 
+      lot: container.lot
+    });
+  }
+  public deleteContainer(idContainer:string): Promise<any> {
+    return this.containerRef.doc(idContainer).delete();
   }
   public getContainer(): Observable<any> {
     return this.containerRef.get();

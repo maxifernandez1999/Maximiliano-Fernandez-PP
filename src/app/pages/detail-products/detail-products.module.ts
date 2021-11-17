@@ -5,6 +5,7 @@ import { ProductsTableComponent } from './components/products-table/products-tab
 import { EatablePipe } from 'src/app/shared/pipes/eatable.pipe';
 import { DetailComponent } from './components/detail/detail.component';
 import { OriginComponent } from './components/origin/origin.component';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 
 
@@ -17,7 +18,8 @@ import { OriginComponent } from './components/origin/origin.component';
     OriginComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    SharedModule
   ]
 })
 export class DetailProductsModule { }
