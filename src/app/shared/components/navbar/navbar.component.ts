@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
+import { LocalstorageService } from '../../services/localstorage.service';
 
 @Component({
   selector: 'app-navbar',
@@ -8,7 +9,7 @@ import { AuthService } from '../../services/auth.service';
   styleUrls: ['./navbar.component.scss'],
 })
 export class NavbarComponent implements OnInit {
-  constructor(private authService: AuthService, private router: Router) {}
+  constructor(private authService: AuthService, private router: Router, private localStorageService: LocalstorageService) {}
 
   ngOnInit(): void {}
   public signOut(): void {
@@ -16,6 +17,7 @@ export class NavbarComponent implements OnInit {
       .logout()
       .then((response) => {
         this.authService.isLoged = false;
+        this.localStorageService.removeLocalStorageData();
         this.router.navigate(['login']);
       })
       .catch((error) => {
