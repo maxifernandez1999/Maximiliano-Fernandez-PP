@@ -6,11 +6,16 @@ import { Injectable } from '@angular/core';
 export class LocalstorageService {
   constructor() {}
 
-  public getLocalStorageData(): Object {
-    return JSON.parse(localStorage.getItem("user"));
+  public getLocalStorageData(): any {
+    if (localStorage.getItem('user') !== null) {
+      return JSON.parse(localStorage.getItem('user'));
+    }
   }
   public getTypeUser(): string {
-    return JSON.parse(localStorage.getItem("user")).profile;
+    if (localStorage.getItem('user') !== null) {
+      return JSON.parse(localStorage.getItem('user')).profile;
+    }
+    return '';
   }
   public removeLocalStorageData(): void {
     localStorage.clear();

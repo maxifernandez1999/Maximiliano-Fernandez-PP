@@ -11,7 +11,7 @@ export class AuthGuard implements CanActivate {
     private router: Router
   ) {}
   canActivate(): boolean {
-    if (this.localStorageService.getTypeUser() === 'administrador') {
+    if (this.localStorageService.getTypeUser() === 'admin') {
       return true;
     } else {
       this.router.navigate(['login']);
