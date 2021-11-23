@@ -37,6 +37,7 @@ export class NavbarComponent implements OnInit {
         break;
 
       default:
+        this.router.navigate(['login']);
         break;
     }
   }
