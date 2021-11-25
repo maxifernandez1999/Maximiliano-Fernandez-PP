@@ -5,7 +5,7 @@
             <li><a class="nav-link px-2 text-white" (click)="redirect('add')">Products</a></li>
             <li *ngIf="userLog === false"><a class="nav-link px-2 text-white" (click)="redirect('container')">Containers</a></li>
             <li><a class="nav-link px-2 text-white" (click)="redirect('detail')">Details</a></li>
-            <li><a class="nav-link px-2 text-white" (click)="redirect('load')">Load Container</a></li>
+           <li><a class="nav-link px-2 text-white" (click)="redirect('load')">Load Container</a></li>
           </ul>
           <div class="text-end">
             <button type="button" class="btn btn-warning" (click)="signOut()">Logout</button>
@@ -13,3 +13,4 @@
         </div>
       </div>
     </header>
+     
