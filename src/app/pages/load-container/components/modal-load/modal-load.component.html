@@ -1,0 +1,36 @@
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+      aria-labelledby="staticBackdropLabel" aria-hidden="true">
+      <div class="modal-dialog">
+            <div class="modal-content">
+                  <div class="modal-header">
+                        <h5 *ngIf="containerInput !== undefined" class="modal-title" id="staticBackdropLabel">Container N° {{containerInput.code}}</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                        <div class="container">
+                              <form  [formGroup]="containerAddForm">
+                              <h6 class="text-center m-3">Select Product</h6>
+                              <select class="form-select" aria-label="Default select example">
+                                    <option *ngFor="let product of products" value="{{product.code}}">{{product.code}}</option>
+                                    
+                              </select>
+                              <h6 class="text-center m-3">Quantity</h6>
+                                    <input type="number" formControlName="quantity"
+                                          [ngClass]="{ 'is-invalid': form.quantity.touched && form.quantity.errors }"
+                                          class="form-control" id="lastName" placeholder="" value="" required>
+                                    <div *ngIf="form.quantity.touched && form.quantity.errors" class="invalid-feedback">
+                                          <div *ngIf="form.quantity.errors.required">Es requerido</div>
+                                          <div *ngIf="form.quantity.errors.max">{{containerInput.lot}} max</div>
+                                    </div>
+                              </form>
+                        </div>
+                  </div>
+                  <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                              Close
+                        </button>
+                        <button type="button" [disabled]="containerAddForm.invalid" class="btn btn-primary">Save</button>
+                  </div>
+            </div>
+      </div>
+</div>

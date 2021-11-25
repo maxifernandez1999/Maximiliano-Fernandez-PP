@@ -1,0 +1,27 @@
+<app-navbar></app-navbar>
+<div class="container">
+  <h2 class="display-6 mb-4">Containers</h2>
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th scope="col">Code</th>
+        <th scope="col">Detail</th>
+        <th scope="col">Lot</th>
+        <th scope="col">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let container of containers">
+        <th>{{container.code}}</th>
+        <th>{{container.mark}}</th>
+        <th>{{container.lot}}</th>
+        <th><button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#staticBackdrop"
+            (click)="loadProducts(container)">
+            Load Products
+          </button></th>
+        <td><input type="button" class="btn btn-info" value="Load Products"></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<app-modal-load [containerInput]="container"></app-modal-load>
