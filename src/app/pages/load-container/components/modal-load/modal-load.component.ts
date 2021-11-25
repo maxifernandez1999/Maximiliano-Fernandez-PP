@@ -102,8 +102,7 @@ export class ModalLoadComponent implements OnInit {
         parseInt(this.stockProduct) - parseInt(stock);
       let newLot: number = parseInt(this.containerInput.lot) - parseInt(stock);
       this.containerService
-        .updateContainer(
-          this.containerInput,
+        .updateContainerWithStock(
           this.containerInput.id,
           newLot.toString(),
           newStock
