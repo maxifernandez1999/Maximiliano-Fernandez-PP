@@ -17,4 +17,12 @@ export class ProductService {
   public getProducts():Observable<Product[]>{
     return this.productsRef.valueChanges() as Observable<Product[]>;
   }
+  public getProductWithID(): Observable<any> {
+    return this.productsRef.get();
+  }
+  public updateProduct(idProduct:string, newStock:string): Promise<any> {
+    return this.productsRef.doc(idProduct).update({
+      stock: newStock
+    });
+  }
 }

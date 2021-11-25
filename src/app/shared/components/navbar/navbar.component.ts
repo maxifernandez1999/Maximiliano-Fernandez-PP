@@ -9,9 +9,14 @@ import { LocalstorageService } from '../../services/localstorage.service';
   styleUrls: ['./navbar.component.scss'],
 })
 export class NavbarComponent implements OnInit {
-  constructor(private authService: AuthService, private router: Router, private localStorageService: LocalstorageService) {}
+  userLog:boolean;
+  constructor(
+    private authService: AuthService,
+    private router: Router,
+    private localStorageService: LocalstorageService
+  ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {this.userLog = this.getUserLog();}
   public signOut(): void {
     this.authService
       .logout()
@@ -24,6 +29,9 @@ export class NavbarComponent implements OnInit {
         console.log(error);
       });
   }
+  public getUserLog():boolean{
+    return this.localStorageService.getTypeUser() === "empleado" ? true : false;
+  }
   public redirect(path: string): void {
     switch (path) {
       case 'add':
@@ -34,6 +42,9 @@ export class NavbarComponent implements OnInit {
         break;
       case 'detail':
         this.router.navigate(['detail']);
+        break;
+      case 'load':
+        this.router.navigate(['load-container']);
         break;
 
       default:

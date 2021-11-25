@@ -17,6 +17,9 @@ export class LocalstorageService {
     }
     return '';
   }
+  public isLog(): boolean {
+    return localStorage.hasOwnProperty('user');
+  }
   public removeLocalStorageData(): void {
     localStorage.clear();
   }

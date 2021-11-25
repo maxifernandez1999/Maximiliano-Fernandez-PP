@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { resetFakeAsyncZone } from '@angular/core/testing';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/compat/firestore';
 import { Observable } from 'rxjs';
 import { Container } from '../models/container';
@@ -19,10 +18,16 @@ export class ContainerService {
   // public getContainer(): Observable<Container[]> {
   //   return this.containerRef.valueChanges() as Observable<Container[]>;
   // }
-  public updateContainer(container: Container, idContainer:string): Promise<any> {
-    return this.containerRef.doc(idContainer).update({
-      mark: container.mark, 
-      lot: container.lot
+  public updateContainerWithStock(idContainer:string, newlot:string, newstock:any[]): Promise<any> {
+    return this.containerRef.doc(idContainer).update({ 
+      lot: newlot,
+      stock: newstock
+    });
+  }
+  public updateContainer(idContainer:string, newlot:string, newmark:string): Promise<any> {
+    return this.containerRef.doc(idContainer).update({ 
+      mark: newmark,
+      lot: newlot
     });
   }
   public deleteContainer(idContainer:string): Promise<any> {

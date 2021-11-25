@@ -2,20 +2,21 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
-import { ImagePipe } from './pipes/image.pipe';
+import { FooterComponent } from './components/footer/footer.component';
 
 @NgModule({
   declarations: [
     NavbarComponent,
     SidebarComponent,
-    ImagePipe
+    FooterComponent
   ],
   imports: [
     CommonModule
   ],
   exports: [
     NavbarComponent,
-    SidebarComponent
+    SidebarComponent,
+    FooterComponent
   ]
 })
 export class SharedModule { }
