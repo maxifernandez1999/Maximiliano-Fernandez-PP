@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Container } from 'src/app/shared/models/container';
 import { ContainerService } from 'src/app/shared/services/container.service';
-import Swal from'sweetalert2';
+
 @Component({
   selector: 'app-load-container',
   templateUrl: './load-container.component.html',
@@ -23,6 +23,7 @@ export class LoadContainerComponent implements OnInit {
           code: res.data().code,
           mark: res.data().mark,
           lot: res.data().lot,
+          stock: ""
         };
         this.containers.push(container);
       });

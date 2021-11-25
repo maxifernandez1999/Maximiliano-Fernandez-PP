@@ -10,14 +10,15 @@
                         <div class="container">
                               <form  [formGroup]="containerAddForm">
                               <h6 class="text-center m-3">Select Product</h6>
-                              <select class="form-select" aria-label="Default select example">
-                                    <option *ngFor="let product of products" value="{{product.code}}">{{product.code}}</option>
+                              <select class="form-select" aria-label="Default select example" formControlName="codeProduct">
+                                    <option [ngValue]="null" disabled>Choose your option</option>
+                                    <option *ngFor="let product of products" [ngValue]="product.code">{{product.code}}</option>
                                     
                               </select>
                               <h6 class="text-center m-3">Quantity</h6>
-                                    <input type="number" formControlName="quantity"
+                                    <input *ngIf="containerInput !== undefined" type="number" formControlName="quantity"
                                           [ngClass]="{ 'is-invalid': form.quantity.touched && form.quantity.errors }"
-                                          class="form-control" id="lastName" placeholder="" value="" required>
+                                          class="form-control" id="lastName" placeholder="{{containerInput.lot}} max lot" value="" required>
                                     <div *ngIf="form.quantity.touched && form.quantity.errors" class="invalid-feedback">
                                           <div *ngIf="form.quantity.errors.required">Es requerido</div>
                                           <div *ngIf="form.quantity.errors.max">{{containerInput.lot}} max</div>
@@ -29,7 +30,7 @@
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
                               Close
                         </button>
-                        <button type="button" [disabled]="containerAddForm.invalid" class="btn btn-primary">Save</button>
+                        <button type="button" [disabled]="containerAddForm.invalid" class="btn btn-primary" (click)="addStockContainer()">Save</button>
                   </div>
             </div>
       </div>
